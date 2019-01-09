@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p>MOBIUS MAGICITE</p>
+        <p id="magicite_daily"></p>
+        <p id="magicite_today"></p>
+
+        <script>
+            function daysInMonth(month, year) {
+                return new Date(year, month, 0).getDate();
+            }
+            var d = new Date();
+            var year = d.getFullYear();
+            var month = d.getMonth() + 1;
+            var magicite_per_day = 20000.0 / daysInMonth(month, year);
+            var day = d.getDate();
+            var magicite_needed_now = magicite_per_day * day;
+
+            document.getElementById("magicite_daily").innerHTML = "You need " + Math.ceil(magicite_per_day) + " magicite per day";
+            document.getElementById("magicite_today").innerHTML = "You need " + Math.round(magicite_needed_now) + " magicite by today";
+        </script>
+    </body>
+</html>
