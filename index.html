@@ -21,7 +21,7 @@
             var day = d.getDate();
             var magicite_needed_now = magicite_per_day * day;
 
-            document.getElementById("magicite_daily").innerHTML = "You need " + Math.ceil(magicite_per_day) + " magicite per day";
+            document.getElementById("magicite_daily").innerHTML = "You need ~" + Math.ceil(magicite_per_day) + " magicite per day";
             document.getElementById("magicite_today").innerHTML = "You need " + Math.round(magicite_needed_now) + " magicite by today";
         </script>
     </body>
