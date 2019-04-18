@@ -70,7 +70,7 @@
             var baseDay = new Date(2019, 3, 17);
             var mobiusDay = nextMobiusDay(day, month - 1, year);
             var daysPassed = daysBetween(baseDay, mobiusDay);
-            document.getElementById("seed_day").innerHTML = "Next Mobius day: " + mobiusDay.toISOString().slice(0,10);
+            document.getElementById("seed_day").innerHTML = "Next Mobius day: " + mobiusDay.toLocaleDateString();
             document.getElementById("seed1A").innerHTML = "HP = " +     elements[daysPassed % 6];
             document.getElementById("seed2A").innerHTML = "Attack = " + elements[(daysPassed + 1) % 6];
             document.getElementById("seed3A").innerHTML = "Break = " +  elements[(daysPassed + 2) % 6];
