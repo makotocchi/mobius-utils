@@ -6,23 +6,79 @@
         <title>Mobius Utils</title>
     </head>
     <body>
-        <p>MOBIUS MAGICITE</p>
+        <p>MAGICITE</p>
         <p id="magicite_daily"></p>
         <p id="magicite_today"></p>
+        <br>
+        <p>---------------------------------</p>
+        <br>
+        <p>SEEDS</p>
+        <p id="seed_day">
+        <ul>
+            <li id="seed1A"></li>
+            <li id="seed2A"></li>
+            <li id="seed3A"></li>
+            <li id="seed4A"></li>
+        </ul>
+        <p>After 4pm (server time):</p>
+        <ul>
+            <li id="seed1B"></li>
+            <li id="seed2B"></li>
+            <li id="seed3B"></li>
+            <li id="seed4B"></li>
+        </ul>
 
         <script>
-            function daysInMonth(month, year) {
+            function daysInMonth(month, year) 
+            {
                 return new Date(year, month, 0).getDate();
             }
-            var d = new Date();
-            var year = d.getFullYear();
-            var month = d.getMonth() + 1;
-            var magicite_per_day = 20000.0 / daysInMonth(month, year);
-            var day = d.getDate();
-            var magicite_needed_now = magicite_per_day * day;
 
+            function nextMobiusDay(day, month, year) 
+            {
+                if (day < 8) 
+                {
+                    return new Date(year, month, 8);
+                }
+                else if (day < 18)
+                {
+                    return new Date(year, month, 18);
+                }
+                else
+                {
+                    return new Date (year, month, 28);
+                }
+            }
+
+            function daysBetween(date1, date2)
+            {
+                date1.setHours(0, 0, 0);
+                date2.setHours(0, 0, 0);
+                return Math.round(Math.abs((date1.getTime() - date2.getTime())/(24*60*60*1000)));
+            }
+
+            var today = new Date();
+            var year = today.getFullYear();
+            var month = today.getMonth() + 1;
+            var magicite_per_day = 20000.0 / daysInMonth(month, year);
+            var day = today.getDate();
+            var magicite_needed_now = magicite_per_day * day;
             document.getElementById("magicite_daily").innerHTML = "You need ~" + Math.ceil(magicite_per_day) + " magicite per day";
             document.getElementById("magicite_today").innerHTML = "You need " + Math.round(magicite_needed_now) + " magicite by today";
+
+            var elements = ["Wind", "Light", "Dark", "Fire", "Water", "Earth"];
+            var baseDay = new Date(2019, 3, 17);
+            var mobiusDay = nextMobiusDay(day, month - 1, year);
+            var daysPassed = daysBetween(baseDay, mobiusDay);
+            document.getElementById("seed_day").innerHTML = "Next Mobius day: " + mobiusDay.toISOString().slice(0,10);
+            document.getElementById("seed1A").innerHTML = "HP = " +     elements[daysPassed % 6];
+            document.getElementById("seed2A").innerHTML = "Attack = " + elements[(daysPassed + 1) % 6];
+            document.getElementById("seed3A").innerHTML = "Break = " +  elements[(daysPassed + 2) % 6];
+            document.getElementById("seed4A").innerHTML = "Magic = " +  elements[(daysPassed + 3) % 6];
+            document.getElementById("seed1B").innerHTML = "HP = " +     elements[(daysPassed + 1) % 6];
+            document.getElementById("seed2B").innerHTML = "Attack = " + elements[(daysPassed + 2) % 6];
+            document.getElementById("seed3B").innerHTML = "Break = " +  elements[(daysPassed + 3) % 6];
+            document.getElementById("seed4B").innerHTML = "Magic = " +  elements[(daysPassed + 4) % 6];
         </script>
     </body>
 </html>
