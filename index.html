@@ -67,18 +67,18 @@
             document.getElementById("magicite_today").innerHTML = "You need " + Math.round(magicite_needed_now) + " magicite by today";
 
             var elements = ["Wind", "Light", "Dark", "Fire", "Water", "Earth"];
-            var baseDay = new Date(2019, 3, 17);
-            var mobiusDay = nextMobiusDay(day, month - 1, year);
-            var daysPassed = daysBetween(baseDay, mobiusDay);
-            document.getElementById("seed_day").innerHTML = "Next Mobius day: " + mobiusDay.toLocaleDateString();
-            document.getElementById("seed1A").innerHTML = "HP = " +     elements[daysPassed % 6];
-            document.getElementById("seed2A").innerHTML = "Attack = " + elements[(daysPassed + 1) % 6];
-            document.getElementById("seed3A").innerHTML = "Break = " +  elements[(daysPassed + 2) % 6];
-            document.getElementById("seed4A").innerHTML = "Magic = " +  elements[(daysPassed + 3) % 6];
-            document.getElementById("seed1B").innerHTML = "HP = " +     elements[(daysPassed + 1) % 6];
-            document.getElementById("seed2B").innerHTML = "Attack = " + elements[(daysPassed + 2) % 6];
-            document.getElementById("seed3B").innerHTML = "Break = " +  elements[(daysPassed + 3) % 6];
-            document.getElementById("seed4B").innerHTML = "Magic = " +  elements[(daysPassed + 4) % 6];
+            var base_day = new Date(2019, 3, 17);
+            var mobius_day = nextMobiusDay(day, month - 1, year);
+            var days_passed = daysBetween(base_day, mobius_day);
+            document.getElementById("seed_day").innerHTML = "Next Mobius day: " + mobius_day.toLocaleDateString();
+            document.getElementById("seed1A").innerHTML = "HP = " +     elements[days_passed % 6];
+            document.getElementById("seed2A").innerHTML = "Attack = " + elements[(days_passed + 1) % 6];
+            document.getElementById("seed3A").innerHTML = "Break = " +  elements[(days_passed + 2) % 6];
+            document.getElementById("seed4A").innerHTML = "Magic = " +  elements[(days_passed + 3) % 6];
+            document.getElementById("seed1B").innerHTML = "HP = " +     elements[(days_passed + 1) % 6];
+            document.getElementById("seed2B").innerHTML = "Attack = " + elements[(days_passed + 2) % 6];
+            document.getElementById("seed3B").innerHTML = "Break = " +  elements[(days_passed + 3) % 6];
+            document.getElementById("seed4B").innerHTML = "Magic = " +  elements[(days_passed + 4) % 6];
         </script>
     </body>
 </html>
