@@ -48,9 +48,13 @@
                 {
                     return new Date(year, month, 28);
                 }
+                else if (month < 11)
+                {
+                    return new Date(year, month + 1, 8);
+                }
                 else
                 {
-                    return new Date(year, (month + 1) % 12, 8);
+                    return new Date(year + 1, 0, 8);
                 }
             }
 
